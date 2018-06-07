@@ -6,9 +6,15 @@ public class Tiger extends Animal {
 		super(name);
 	}
 
-	@Override
+	//@Override
 	public void aravu() {
 		System.out.println(getName() + " CHUFFing");
+	}
+
+	@Override
+	public void sound() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

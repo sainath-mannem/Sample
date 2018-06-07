@@ -6,7 +6,7 @@ public class Dog extends Animal {
 		super(name);
 	}
 
-	@Override
+	//@Override
 	public void aravu() {
 		System.out.println(getName() + " bow bow");
 	}
@@ -14,5 +14,11 @@ public class Dog extends Animal {
 	@Override
 	public void sleep() {
 		System.out.println(getName()+" Sleeping on the roads");
+	}
+
+	@Override
+	public void sound() {
+		// TODO Auto-generated method stub
+		
 	}
 }
