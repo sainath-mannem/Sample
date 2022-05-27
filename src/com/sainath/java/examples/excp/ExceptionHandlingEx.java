@@ -1,5 +1,7 @@
 package com.sainath.java.examples.excp;
 
+import com.sainath.java.examples.DefaultClass;
+import com.sainath.java.examples.Employee;
 
 class Util{
 	
@@ -44,6 +46,9 @@ public class ExceptionHandlingEx {
 	public static void main1() throws Exception {
 		System.out.println(Util.division1(4, 0));
 		//Util.division1(4, 0);
+		Employee e = new Employee();
+		int x = e.number;
+		DefaultClass dt = new DefaultClass();
 	}
 	
 	public static void main(String[] args) {
