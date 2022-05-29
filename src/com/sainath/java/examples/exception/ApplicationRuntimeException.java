@@ -23,7 +23,6 @@ public class ApplicationRuntimeException extends RuntimeException {
 		this.message = message;
 	}
 	public ApplicationRuntimeException(int errorCode, String message) {
-		super();
 		this.errorCode = errorCode;
 		this.message = message;
 	}

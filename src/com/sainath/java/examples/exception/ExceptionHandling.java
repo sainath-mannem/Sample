@@ -7,16 +7,16 @@ public class ExceptionHandling {
 		throw new RuntimeException();
 	}
 	
-	public void fundtransfer(String frmAcc, String toAcct, double amt) throws NoFundsExcepion, InvaildAccountExc, ApplicationException  {
+	public void fundtransfer(String frmAcc, String toAcct, double amt) throws NoFundsExcepion, InvaildAccountExc, ApplicationRuntimeException  {
 	
 		if(getBalance(frmAcc) < amt) {
-			throw new NoFundsExcepion();
+			throw new NoFundsExcepion("NoFundsExcepion");
 		}
 		if(toAcct == null) {
-			throw new InvaildAccountExc();
+			throw new InvaildAccountExc("InvaildAccountExc");
 		}
-		
-		throw new ApplicationRuntimeException(1,"");
+		if(amt == 0)
+			throw new ApplicationRuntimeException(1,"ApplicationRuntimeException");
 		
 	}
 	

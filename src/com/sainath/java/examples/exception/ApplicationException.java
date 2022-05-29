@@ -22,7 +22,7 @@ public class ApplicationException extends Exception {
 		this.message = message;
 	}
 	public ApplicationException(int errorCode, String message) {
-		super();
+		super(message);
 		this.errorCode = errorCode;
 		this.message = message;
 	}
