@@ -69,3 +69,15 @@ public class Employee {
 	
 	
 }
+
+class EmployeeDecrator {
+	Employee emp;
+	
+	public int getNumber() {
+		return emp.getNumber();
+	}
+	
+	public String getFullName() {
+		return emp.getName() + emp.name2;
+	}
+}

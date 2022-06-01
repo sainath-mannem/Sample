@@ -6,18 +6,21 @@ import java.util.List;
 import com.sainath.java.examples.Employee;
 
 public class ThreadByRunnableEx {
-  public static void main(String[] args) {
-	List<Employee> emps = getEmps();
-	long longmills = System.currentTimeMillis();
-	//processEmpInSeq(emps);
-	processEmpInParallel(emps);
-	System.out.println("Time taken to process the job "+(System.currentTimeMillis() - longmills));
-  }
+	private EmployeeList empList = new EmployeeList();
+	public static void main(String[] args) {
+		ThreadByRunnableEx ex = new ThreadByRunnableEx();
+		List<Employee> emps = getEmps();
+		long longmills = System.currentTimeMillis();
+		// processEmpInSeq(emps);
+		ex.processEmpInParallel(emps);
+		System.out.println("Time taken to process the job " + (System.currentTimeMillis() - longmills));
+		System.out.println(ex.empList.getEmpCount());
+	}
 
-	private static void processEmpInParallel(List<Employee> emps) {
+	private void processEmpInParallel(List<Employee> emps) {
 		List<Thread> threads = new ArrayList<>();
 		for (Employee employee : emps) {
-			Thread mainThread = new Thread(new MainRunnable(employee));
+			Thread mainThread = new Thread(new MainRunnable(employee, empList));
 			mainThread.start();
 			threads.add(mainThread);
 		}
@@ -39,7 +42,7 @@ public class ThreadByRunnableEx {
 
 	private static List<Employee> getEmps() {
 		List<Employee> emps = new ArrayList<Employee>();
-		for (int i = 1; i <= 1000; i++) {
+		for (int i = 1; i <= 100; i++) {
 			emps.add(new Employee(i, "Emp " + i));
 		}
 		return emps;
@@ -49,8 +52,10 @@ public class ThreadByRunnableEx {
 
 class MainRunnable implements Runnable {
 	private Employee emp;
-	MainRunnable(Employee emp) {
+	private EmployeeList empList;
+	MainRunnable(Employee emp, EmployeeList empList) {
 		this.emp = emp;
+		this.empList = empList;
 	}
 	public void run() {
 		try {
@@ -60,5 +65,7 @@ class MainRunnable implements Runnable {
 			e.printStackTrace();
 		}
 		System.out.println(emp + " is running in a thread");
+		empList.addEmp();
+		empList.deleteEmp();
 	}
 }
