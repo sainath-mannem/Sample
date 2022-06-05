@@ -38,6 +38,8 @@ public class ListSortEx {
 				return o2.getName().compareTo(o1.getName());
 			}
 		});
+		Collections.sort(empList, (Employee o1, Employee o2) -> o2.getName().compareTo(o1.getName()));
+		
 		
 		System.out.println("After Sort empByName: "+ empList);
 	}
