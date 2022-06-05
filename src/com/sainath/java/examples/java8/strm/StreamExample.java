@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class StreamExample {
@@ -29,6 +30,7 @@ public class StreamExample {
 	private static List<Emp2> getEmp2UsingStream(List<Emp> list) {
 		List<Emp2> collect = list.stream()
 					.filter(emp -> emp.getAge() > 30)
+					//.filter(new PredicateImpl())
 					.map(emp -> new Emp2(emp.getAge(), emp.getName(), emp.getId(), true))
 					.distinct()
 					.sorted((Emp2 e1, Emp2 e2) -> e1.getName().compareTo(e2.getName()))
@@ -42,6 +44,16 @@ public class StreamExample {
 					
 					;
 		return collect;
+	}
+	
+	static class PredicateImpl implements Predicate<Emp> {
+
+		@Override
+		public boolean test(Emp t) {
+			return t.getAge() > 30;
+		}
+
+		
 	}
 
 	private static Optional<List<Emp2>> getEmp2(List<Emp> list) {
