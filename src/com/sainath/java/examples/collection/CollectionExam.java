@@ -3,6 +3,7 @@ package com.sainath.java.examples.collection;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class CollectionExam {
 
@@ -22,7 +23,7 @@ public class CollectionExam {
 			iterator.remove();
 		}
 		
-		
+		Consumer<Integer> display = a -> System.out.println(a);
 		
 	}
 }
